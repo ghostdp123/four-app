@@ -27,3 +27,5 @@ export type CartItem = {
   quantity: number
   selectedVariant: string
 }
+
+export type NotAccountType = 'login' | 'register'

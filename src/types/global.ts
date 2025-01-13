@@ -29,3 +29,12 @@ export type CartItem = {
 }
 
 export type NotAccountType = 'login' | 'register'
+
+export type Address = {
+  id: number
+  name: string
+  city: string
+  address: string
+  phone: string
+  userid: number
+}

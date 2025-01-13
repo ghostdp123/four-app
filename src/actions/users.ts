@@ -49,6 +49,15 @@ export async function registerAction(email: string, name: string, password: stri
   }
 }
 
+export async function logoutAction() {
+  const cookie = await cookies()
+  cookie.delete('token')
+  return {
+    status: 200,
+    body: 'logout success'
+  }
+}
+
 export async function authAction() {
   const cookie = await cookies()
   const token = cookie.get('token')

@@ -1,15 +1,16 @@
-
-import NotAccount from "@/components/NotAccount"
-import Account from "@/components/Account"
 import { authAction } from "@/actions/users"
+import Checkout from "@/components/Checkout"
+import { redirect } from "next/navigation"
 import { addressesAction } from "@/actions/addresses"
-
 export default async function Page() {
   const auth = await authAction()
   const addresses = await addressesAction(auth.data?.userid)
+  if (auth.status !== 200) {
+    redirect('/account')
+  }
   return (
-    <>
-      { auth.status === 200 && auth.data ? <Account authData={auth.data} addressesData={addresses.data} /> : <NotAccount /> }
-    </>
+    <div className="container2">
+      <Checkout addressesData={addresses.data} />
+    </div>
   )
 }
